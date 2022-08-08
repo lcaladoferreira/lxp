@@ -1,0 +1,32 @@
+/* .Card {
+    background: 'linear-gradient(45deg, #219gf3 30%, #9e9e9e 90%)';
+} */
+svg {
+    display: inline-block;
+    font: 8em 'Montserrat';
+    width: auto;
+    height: auto;
+    margin: 0 auto;
+    box-sizing: content-box;
+}
+.text-copy {
+    stroke: #61dbfb;
+    stroke-width: 4px;
+}
+.teachertext {
+    display:inline-block;
+    overflow:hidden;
+    height: auto;
+    font-weight: bolder;
+    color: #61dbfb;
+    font-size: large;
+    max-width: -webkit-fill-available;
+    margin-top: -3rem;
+    font-family: math;
+}
+/* .dashcontain {
+    margin: -6rem 8rem 5rem 8rem !important;
+    linear-gradient(0deg, rgba(66,66,66,1) 0%, rgba(97,219,251,0.7450689748555672) 100%)
+} */
+
+/* @media only screen and (min-width: 0){html{font-size:inherit !important;}} */
