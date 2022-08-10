@@ -2,14 +2,11 @@ import React, { useEffect, useState } from 'react'
 import API from '../utils/API';
 import history from '../history/history.jsx';
 import CustFunc from '../utils/customFunctions';
-// import RootContext from '../utils/RootContext';
 import ClassBanner from '../components/ClassBanner/ClassBanner';
 import Container from '../components/Container/Container';
 import Announcement from '../components/AnnouncementForm/Announcement';
 import CommentButton from '../components/Comments/CommentButton';
 import Expander from '../components/Comments/ExpansionDiv';
-
-// import { makeStyles } from '@material-ui/core/styles';
 import { Card, CardActions, CardContent, IconButton } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
@@ -20,22 +17,16 @@ import Tooltip from '@material-ui/core/Tooltip';
 import AddIcon from '@material-ui/icons/Add';
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
 import AssignmentCard from '../components/Assignments/AssignmentCard.jsx'
-// import { toast, ToastContainer } from 'react-toastify';
-// import { ExpansionPanel, ExpansionPanelSummary} from '@material-ui/core'
-// import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-// import ExpansionDiv from '../components/Comments/ExpansionDiv';
+
 
 
 
 export const Classroom = (props) => {
 
-    // const classes = useStyles();
-    // const { userType, setUserType, userID, setUserID, classID } = useContext(RootContext);
     const [classID, setClassID] = useState('')
     const [openDialog, setOpenDialog] = useState(false)
     const [currentClassObj, setCurrentClassObj] = useState([])
     const [announcementObj, setAnnouncementObj] = useState([])
-    // const [commentObj, setCommentObj] = useState([])
     const [userType, setUserType] = useState("");
     const [userID, setUserID] = useState("")
 
@@ -49,8 +40,8 @@ export const Classroom = (props) => {
         try {
             await API.readAndVerifyCookie()
                 .then((resp) => {
-                    console.log("cookie call resp: ", resp)
-                    console.log("dropping the load: ", resp.data.payload)
+                    console.log("cookie chamando resp: ", resp)
+                    console.log("baixando os dados: ", resp.data.payload)
                     setUserType(resp.data.payload.type)
                     setUserID(resp.data.payload._id)
                     console.log(userType)
@@ -94,15 +85,13 @@ export const Classroom = (props) => {
 
     function handleDialogSubmit() {
         if (announcementObj.title && announcementObj.body) {
-            console.log('Announcement looks good so far')
+            console.log('O anúncio parece bom até agora')
             API.createAnnouncement(currentClassObj._id, announcementObj)
                 .then((resp) => {
                     console.log(resp)
                     loadClassInfo()
-                    // currentClassObj.announcements.push(announcementObj)
                 })
                 .then(() => handleDialogClose())
-                // .then(() => setState({ msg: toast.success('announcement created') }))
                 .then(() => console.log(announcementObj))
                 .catch(err => console.log(err))
         }
@@ -126,16 +115,15 @@ export const Classroom = (props) => {
     }
 
     function handleAddComment(event, announcementIndex) {
-        console.log('Adding comment ...')
+        console.log('Adicionando comentario ...')
 
         const commentInfo = {
             author: userID,
             body: event.target.value.split('\n', 1)[0],
-            // announcementID: currentClassObj.announcements[0]._id
         }
 
         console.log(announcementIndex);
-        // console.log(currentClassObj)
+
         if (event.keyCode === 13) {
 
             API.createComment(currentClassObj.announcements[announcementIndex]._id, commentInfo)
@@ -165,7 +153,7 @@ export const Classroom = (props) => {
                                             <Card>
                                                 <CardContent>
                                                     <Typography /*className={classes.announcementTitle}*/ variant='h5' align='center'>
-                                                        ANNOUNCEMENTS BOARD &nbsp; &nbsp;
+                                                        QUADRO DE ANÚNCIOS &nbsp; &nbsp;
                                                 {userType === 'Teacher' ?
                                                             <Tooltip title="Add an announcement" aria-label="add">
                                                                 <Fab size="small" color="primary" aria-label="add">
@@ -179,7 +167,7 @@ export const Classroom = (props) => {
                                         </Paper>
                                     </Grid>
                                     {/* ---------------------------------------------------------------------- */}
-                                    {/* ___________ This is the beginning of the announcment renderings_______ */}
+                                    {/* ___________ Este é o início das renderizações dos anúncios_______ */}
                                     {/* ------------------------------------------------------------------------- */}
                                     {
                                         currentClassObj.announcements ? currentClassObj.announcements.map((announcement, index) => {
@@ -197,7 +185,7 @@ export const Classroom = (props) => {
                                                                             </Grid>
                                                                             <Grid item s={2}>
                                                                                 {userType === 'Teacher' ?
-                                                                                    <Tooltip title="Delete announcement thread" aria-label="add">
+                                                                                    <Tooltip title="Excluir anúncio" aria-label="add">
                                                                                         <IconButton onClick={(event) => handleDeleteAnnouncement(event, announcement._id)}>
                                                                                             <DeleteOutlineIcon color='primary' />
                                                                                         </IconButton>
@@ -236,7 +224,7 @@ export const Classroom = (props) => {
                                                                                                                     </Grid>
                                                                                                                     <br />
                                                                                                                     <Grid item s={6}>
-                                                                                                                        <strong>Posted on:</strong> &nbsp; {CustFunc.formatDate(comment.createDate)}
+                                                                                                                        <strong>Postado em:</strong> &nbsp; {CustFunc.formatDate(comment.createDate)}
                                                                                                                     </Grid>
                                                                                                                     <Grid item s={12}>
                                                                                                                         {comment.body}
@@ -247,7 +235,7 @@ export const Classroom = (props) => {
                                                                                                                 <Grid container spacing={1}>
                                                                                                                     <Grid item>
                                                                                                                         {userType === 'Teacher' ?
-                                                                                                                            <Tooltip title="Delete comment thread" aria-label="add">
+                                                                                                                            <Tooltip title="Excluir sequência de comentários" aria-label="add">
                                                                                                                                 <IconButton onClick={(event) => handleDeleteComment(event, comment._id)}>
                                                                                                                                     <DeleteOutlineIcon color='primary' />
                                                                                                                                 </IconButton>
@@ -279,7 +267,7 @@ export const Classroom = (props) => {
                                                     <Card /*className={classes.root}*/ variant="outlined">
                                                         <CardContent>
                                                             <Typography variant="h5" component="h2">
-                                                                No announcements at this time
+                                                               Nenhum anúncio no momento
                                                     </Typography>
                                                         </CardContent>
                                                     </Card>
@@ -287,16 +275,16 @@ export const Classroom = (props) => {
                                             </Grid>
                                     }
                                     {/* ------------------------------------------------------------------------- */}
-                                    {/* ___________ This is the end of the announcment renderings________________ */}
+                                    {/* ___________ Este é o fim das renderizações do anúncio________________ */}
                                     {/* ------------------------------------------------------------------------- */}
                                 </Grid>
                             </Box>
                         </Paper>
-                        {/* <ToastContainer /> */}
+                       
                     </Container>
                 </Grid>
                 <Grid item xs={4} spacing={3}>
-                    {/* <p>this is where the assignments show-up</p> */}
+                    {/* <p>é aqui que as tarefas aparecem</p> */}
                     {currentClassObj.assignments && currentClassObj.assignments.map(assignment=>(
                         <AssignmentCard
                         title={assignment.title}
@@ -307,7 +295,7 @@ export const Classroom = (props) => {
                 </Grid>
             </Grid>
             {/* ---------------------------------------------------------------------------------------- */}
-            {/* _____________The below component renders the dialog to add an announcement______________ */}
+            {/* ________O componente abaixo renderiza a caixa de diálogo para adicionar um anúncio______ */}
             {/* ----------------------------------------------------------------------------------------- */}
             <Announcement
                 open={openDialog}

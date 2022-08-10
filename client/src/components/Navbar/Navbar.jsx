@@ -13,7 +13,6 @@ import SchoolIcon from "@material-ui/icons/School";
 import HomeIcon from "@material-ui/icons/Home";
 import FindInPageIcon from "@material-ui/icons/FindInPage";
 import GradeIcon from "@material-ui/icons/Grade";
-// import NoteAddIcon from "@material-ui/icons/NoteAdd";
 import Tooltip from "@material-ui/core/Tooltip";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 
@@ -59,11 +58,7 @@ export default function PrimarySearchAppBar() {
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-  // const [open, setOpen] = React.useState(false);
-
-  // const handleProfileMenuOpen = (event) => {
-  //   setAnchorEl(event.currentTarget);
-  // };
+ 
 
   const handleMobileMenuClose = () => {
     setMobileMoreAnchorEl(null);
@@ -77,13 +72,6 @@ export default function PrimarySearchAppBar() {
   const handleMobileMenuOpen = (event) => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
-  // const handleClose = () => {
-  //   setOpen(false);
-  // };
-
-  // const handleOpen = () => {
-  //   setOpen(true);
-  // };
 
   const menuId = "primary-search-account-menu";
   const renderMenu = (
@@ -96,8 +84,7 @@ export default function PrimarySearchAppBar() {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      {/* <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem> */}
+      {}
     </Menu>
   );
   const mobileMenuId = "primary-search-account-menu-mobile";
@@ -128,7 +115,7 @@ export default function PrimarySearchAppBar() {
           </Badge>
         </IconButton>
         <Link to="/">
-          <p>Home</p>
+          <p>Início</p>
         </Link>
       </MenuItem>
       <MenuItem onClick={handleMobileMenuClose}>
@@ -148,7 +135,7 @@ export default function PrimarySearchAppBar() {
           </Badge>
         </IconButton>
         <Link to="/search">
-          <p>Search</p>
+          <p>Buscar</p>
         </Link>
       </MenuItem>
       <MenuItem onClick={handleMobileMenuClose}>
@@ -172,27 +159,7 @@ export default function PrimarySearchAppBar() {
           <p>Dashboard</p>
         </Link>
       </MenuItem>
-      {/* <MenuItem onClick={handleMobileMenuClose}>
-        <IconButton
-          color="inherit"
-          className={`nav-item
-              ${
-                window.location.pathname === "/assignmentsStudent"
-                  ? "active"
-                  : ""
-              }
-                            `}
-        >
-          <Badge color="secondary">
-            <Link to="/dashboardStudent">
-              <SchoolIcon />
-            </Link>
-          </Badge>
-        </IconButton>
-        <Link to="/dashboardStudent">
-          <p>Student Dashboard</p>
-        </Link>
-      </MenuItem> */}
+      {}
       <MenuItem onClick={handleMobileMenuClose}>
         <IconButton
           color="inherit"
@@ -207,7 +174,7 @@ export default function PrimarySearchAppBar() {
           </Badge>
         </IconButton>
         <Link to="/grades">
-          <p>Gradebook</p>
+          <p>Grade Curricular</p>
         </Link>
       </MenuItem>
       <MenuItem onClick={handleMobileMenuClose}>
@@ -233,14 +200,7 @@ export default function PrimarySearchAppBar() {
     <div className={classes.grow}>
       <AppBar style={style} position="static">
         <Toolbar>
-          {/* <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="open drawer"
-          >
-            <MenuIcon />
-          </IconButton> */}
+          {}
           <img
             edge="start"
             alt="react"
@@ -309,24 +269,7 @@ export default function PrimarySearchAppBar() {
                 </Badge>
               </Tooltip>
             </IconButton>
-            {/* <IconButton
-              color="inherit"
-              className={`nav-item
-              ${
-                window.location.pathname === "/assignmentsStudent"
-                  ? "active"
-                  : ""
-              }
-                            `}
-            >
-              <Tooltip placement="bottom" title="Student DashBoard">
-                <Badge color="secondary" style={stylin}>
-                  <Link to="/dashboardStudent">
-                    <SchoolIcon />
-                  </Link>
-                </Badge>
-              </Tooltip>
-            </IconButton> */}
+            {}
 
             <IconButton
               color="inherit"
@@ -361,7 +304,7 @@ export default function PrimarySearchAppBar() {
               aria-label="account of current user"
               aria-controls={menuId}
               aria-haspopup="true"
-              // onClick={handleProfileMenuOpen}
+              
               color="inherit"
             ></IconButton>
           </div>

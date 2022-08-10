@@ -15,7 +15,7 @@ const Jumbotron = (props) => {
         <p className="jumbotext">{props.missionStatement}</p>
         <MDBBtn className="btn-grad center" href={props.href}>
           {" "}
-          Login/Register
+          Ingressar/Registrar
         </MDBBtn>
       </MDBJumbotron>
     </MDBContainer>

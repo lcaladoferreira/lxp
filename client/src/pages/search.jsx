@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 
 import API from "../utils/API";
-// import RootContext from '../utils/RootContext';
 
 import {
   Input,
@@ -18,7 +17,6 @@ import {
 } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
 import AddIcon from "@material-ui/icons/AddCircleOutline";
-// import { sizing, positions } from '@material-ui/system';
 import "./pageStyle/search.css";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -54,8 +52,8 @@ const Search = () => {
     getAndVerifyUserInfo();
   }, [getAndVerifyUserInfo]);
 
-  //This function is called when the user his the request to join button
-  //it sends the user's info back to the database and adds them to the class
+  //Esta função é chamada quando o usuário faz o pedido para entrar no botão
+   //envia as informações do usuário de volta ao banco de dados e as adiciona à classe
   async function handleJoinClass(event) {
     const requestInfo = event.currentTarget.value;
     const userInfo = {};
@@ -83,24 +81,14 @@ const Search = () => {
         toast.error(errorMessage, { position: toast.POSITION.TOP_CENTER });
       }
     }
-
-    // if (classJustJoined) {
-    //   toast.success("You were successfully added to the class!", {
-    //     position: toast.POSITION.TOP_CENTER,
-    //   });
-    // } else {
-    //   toast.error("There was an error when adding you to the class.", {
-    //     position: toast.POSITION.TOP_CENTER,
-    //   });
-    // }
   }
 
   function handleCloseModal() {
     setOpenModal(false);
   }
 
-  //This function what the user is typing and what they select in the select dropdown
-  //Sets those to the classSearchObj state
+//Esta função o que o usuário está digitando e o que ele seleciona na lista suspensa de seleção
+// Define para o estado classSearchObj
   function handleSearchChange(event) {
     console.log(event.target.name);
     console.log(event.target.value);
@@ -123,12 +111,9 @@ const Search = () => {
           classSearchObj.selectValue,
           classSearchObj.inputValue
         );
-
-        // const classSearchResult = data;
-        console.log(classSearchResult);
         await setApiClasses(classSearchResult.data);
       } catch {
-        throw new Error("Failed to find classes based on search criteria");
+        throw new Error("Falha ao encontrar classes com base em critérios de pesquisa");
       }
     }
   }
@@ -141,24 +126,22 @@ const Search = () => {
             <Grid item xs={3} className="dropdown">
               <Select
                 className="searchbox"
-                // labelId="demo-simple-select-label"
-                // id="demo-simple-select"
                 variant="outlined"
                 value={classSearchObj.selectValue}
                 name={"selectValue"}
                 onChange={handleSearchChange}
               >
-                <MenuItem value={"all"}>All Classes</MenuItem>
-                <MenuItem value={"courseTitle"}>Title</MenuItem>
-                <MenuItem value={"courseDescription"}>Description</MenuItem>
-                <MenuItem value={"subject"}>Subject</MenuItem>
+                <MenuItem value={"all"}>Todas as classes</MenuItem>
+                <MenuItem value={"courseTitle"}>Título</MenuItem>
+                <MenuItem value={"courseDescription"}>Descrição</MenuItem>
+                <MenuItem value={"subject"}>Assunto</MenuItem>
               </Select>
             </Grid>
             <Grid item xs={6} className="searchbar">
               <Box py={2}>
                 <Input
                   color="primary"
-                  placeholder="search for classes here"
+                  placeholder="procure por aulas aqui"
                   fullWidth
                   disableUnderline
                   name={"inputValue"}
@@ -174,7 +157,7 @@ const Search = () => {
                 onClick={handleSearchSubmit}
               >
                 <SearchIcon />
-                Search
+                Buscar
               </Button>
             </Grid>
           </Grid>
@@ -199,20 +182,20 @@ const Search = () => {
                             onClick={handleJoinClass}
                           >
                             <AddIcon />
-                            Request to Join
+                            Pedido de adesão
                           </Button>
                         </Grid>
                         <Grid item xs={6} className="description">
                           {item.courseDescription}
                         </Grid>
                         <Grid item xs={3}>
-                          Course subject: <p /> <h6>{item.courseDiscipline}</h6>
+                        Assunto do curso: <p /> <h6>{item.courseDiscipline}</h6>
                         </Grid>
                       </ListItem>
                     );
                   })
                 ) : (
-                  <p>No classes Found</p>
+                  <p>Nenhuma aula encontrada</p>
                 )}
               </ul>
             </Box>
@@ -238,7 +221,7 @@ const Search = () => {
               <Paper elevation={6}>
                 <Typography variant="h6" align="center">
                   <p id="modal-title">
-                    Please select search criteria in select dropdown.
+                  Selecione os critérios de pesquisa no menu suspenso de seleção.
                   </p>
                 </Typography>
               </Paper>

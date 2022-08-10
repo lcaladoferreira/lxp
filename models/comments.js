@@ -5,13 +5,13 @@ const CommentSchema = new Schema(
     {
         author: {
             type: Schema.Types.ObjectId,
-            ref: 'Register',
+            ref: 'Registro',
             required: true
         },
         body: {
             type: String,
             trim: true,
-            required: "Enter an announcement message"
+            required: "Insira uma mensagem de anúncio"
         },
         createDate: {
             type: Date,

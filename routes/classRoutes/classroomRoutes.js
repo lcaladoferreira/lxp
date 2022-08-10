@@ -1,32 +1,22 @@
-// mergeParams: true option passed to merge parameters created
-// here with upstream parent routes. Why?
-// params established in parent routes would be inaccessible otherwise
 const router = require("express").Router({ mergeParams: true });
 const classroomController = require("../../controllers/classroomController");
-// const aController = require('../../controllers/announcementController')
 const multer  = require('multer');
 const upload = multer({ dest: 'uploads/' })
  
-
-
-
-// Matches with "/api/classrooms"
+// Corresponde a "/api/classrooms"
 router.route("/")
       .get(classroomController.findAll)
       .post(classroomController.create);
 
-// Matches with "/api/classrooms/:id"
+// Corresponde a "/api/classrooms/:id"
 router.route("/:id")
       .get(classroomController.findById)
       .post(classroomController.update)
       .delete(classroomController.remove);
       
-//Matchers with "/api/classroom/user/:id"
+// Corresponde a "/api/classroom/user/:id"
 router.route('/user/:id')
       .get(classroomController.findClassesByUser)
-
-// router.route('/:selectValue/:inputValue')
-//       .get(classroomController.findAll)
 
 router.route('/:id/addStudent')
       .post(classroomController.AddStudentToClass)

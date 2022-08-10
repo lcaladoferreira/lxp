@@ -1,7 +1,7 @@
 {
-  "name": "projectthree",
+  "name": "projectLXP",
   "version": "1.0.0",
-  "description": "MERN",
+  "description": "projectLXP",
   "main": "server.js",
   "private": true,
   "scripts": {
@@ -13,19 +13,18 @@
     "seed": "node scripts/seedAtlas.js",
     "clear": "node scripts/clear.js",
     "install": "cd client && npm install",
-    "build": "cd client && npm run build",
-    "heroku-postbuild": "npm run build"
+    "build": "cd client && npm run build"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jlovejo2/LXP_Learning_PlatForm.git"
+    "url": ""
   },
   "author": "James",
   "license": "",
   "bugs": {
-    "url": "https://github.com/jlovejo2/LXP_Learning_PlatForm"
+    "url": ""
   },
-  "homepage": "https://github.com/DopamineDriven/ProjectThree#readme",
+  "homepage": "",
   "devDependencies": {
     "concurrently": "^5.1.0",
     "nodemon": "^2.0.4"

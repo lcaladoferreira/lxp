@@ -1,7 +1,5 @@
 import React from 'react';
-
 import { ExpansionPanel, ExpansionPanelSummary } from '@material-ui/core'
-
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 const ExpansionDiv = (props) => {

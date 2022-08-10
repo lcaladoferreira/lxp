@@ -4,7 +4,7 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Selection from './Selection'
 import Card from './AssignmentCard'
-// import './style.css';
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -13,15 +13,7 @@ const useStyles = makeStyles((theme) => ({
   paper: {
     padding: theme.spacing(2),
     textAlign: 'center',
-    // marginTop: '4rem',
-    // marginBottom: '5rem',
-    // marginLeft: 'auto',
-    // marginRight: 'auto',
-    // paddingRight: 'auto',
-    // paddingLeft: 'auto',
-    // borderRadius: '20px',
     color: theme.palette.text.secondary,
-    // background: 'repeating-radial-gradient(circle farthest-side at bottom left, rgb(255, 255, 255) 58%, rgb(97, 219, 251) 89%)',
   },
 }));
 

@@ -1,8 +1,8 @@
 import React from "react";
 
-// Exporting the Container, Row, and Col components from this file
+// Exportando os componentes Container, Row e Col deste arquivo
 
-// This Container component allows us to use a bootstrap container without worrying about class names
+// Este componente Container nos permite usar um container bootstrap sem nos preocuparmos com nomes de classes
 function Container({ fluid, children }) {
   return (
     <div

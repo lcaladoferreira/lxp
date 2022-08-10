@@ -10,13 +10,12 @@ import Grow from "@material-ui/core/Grow";
 import Popper from "@material-ui/core/Popper";
 import MenuItem from "@material-ui/core/MenuItem";
 import MenuList from "@material-ui/core/MenuList";
-// import './style.css';
 
 const options = [
-  "Select a Class",
-  "Class title1",
-  "Class title1",
-  "Class title3",
+  "Selecione uma classe",
+   "Título da classe1",
+   "Título da classe1",
+   "Título da classe3",
 ];
 
 const useStyles = makeStyles((theme) => ({
@@ -26,46 +25,39 @@ const useStyles = makeStyles((theme) => ({
   paper: {
     padding: theme.spacing(2),
     textAlign: "center",
-    // marginTop: "5rem",
-    // marginLeft: "auto",
-    // marginRight: "auto",
-    // paddingRight: 'auto',
-    // paddingLeft: 'auto',
-    // borderRadius: '20px',
     color: theme.palette.text.secondary,
-    // background: 'repeating-radial-gradient(circle farthest-side at bottom left, rgb(255, 255, 255) 58%, rgb(97, 219, 251) 89%)',
   },
 }));
 
 export default function TeachDashboard() {
   const [grades, setgrades] = React.useState({
     class1: {
-      James: [5, 6, 9],
-      Jimmy: [5, 8, 9],
-      Kylie: [5, 6, 1],
-      master: [5, 10, 10],
+      Jaime: [5, 6, 9],
+      João: [5, 8, 9],
+      Karla: [5, 6, 1],
+      professor: [5, 10, 10],
     },
     class2: {
-      Joe: [5, 6, 9],
-      Jack: [5, 8, 9],
-      Brie: [5, 6, 1],
-      master: [5, 10, 10],
+      João: [5, 6, 9],
+      Jaqueline: [5, 8, 9],
+      Bruno: [5, 6, 1],
+      professor: [5, 10, 10],
     },
     class3: {
-      Andrew: [5, 6, 9],
-      Adam: [5, 8, 9],
-      Yong: [5, 6, 1],
-      master: [5, 10, 10],
+      Andre: [5, 6, 9],
+      Adão: [5, 8, 9],
+      Yola: [5, 6, 1],
+      professor: [5, 10, 10],
     },
   });
-  //const [whichClass, setWhichClass]=useState(1)
+
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
   const [selectedIndex, setSelectedIndex] = React.useState(1);
 
   const handleClick = () => {
-    console.info(`You clicked ${options[selectedIndex]}`);
+    console.info(`você clicou ${options[selectedIndex]}`);
   };
 
   const handleMenuItemClick = (event, index) => {

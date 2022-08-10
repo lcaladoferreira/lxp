@@ -1,13 +1,9 @@
-# Client-Side Ideation
+# Ideação do lado do cliente
 https://material-ui.com/
-## Include -name following each entry
+## Incluir -name após cada entrada
 
-### Strict
-- Strictmode (SM) offers an enhanced development experience
-- Activates checks and adds warnings at runtime 
-- Warnings in SM translate to bugs in production when using concurrently
+### Rigoroso
+- Strictmode (SM) oferece uma experiência de desenvolvimento aprimorada
+- Ativa verificações e adiciona avisos em tempo de execução
+- Avisos no SM se traduzem em bugs na produção ao usar simultaneamente
 - https://medium.com/nmc-techblog/wait-youre-not-using-react-strictmode-a9713927a33b
-
--Andrew 
-
-

@@ -1,7 +1,7 @@
 .content {
   margin-top: 5rem !important;
   margin-bottom: 1rem !important;
-  box-shadow: 0px 0px 30px 5px #61dbfb;
+  box-shadow: 0px 0px 30px 5px #4b808d;
   border-radius: 5px;
 }
 
@@ -24,7 +24,7 @@
 }
 
 #ListItem {
-  outline: paleturquoise;
+  outline: rgb(28, 70, 70);
 }
 
 .modal {

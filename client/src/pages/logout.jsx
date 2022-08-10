@@ -8,12 +8,11 @@ const Logout = () => {
   const [userType, setUserType] = useState("");
   const [userID, setUserID] = useState("");
 
-  // boilerplate
   const getAndVerifyUserInfo = useCallback(() => {
     API.readAndVerifyCookie()
       .then((resp) => {
-        console.log("cookie call resp: ", resp);
-        console.table("dropping the load: ", resp.data.payload);
+        console.log("cookie chamando resp: ", resp);
+        console.table("baixando a carga: ", resp.data.payload);
         setUserType(resp.data.payload.type);
         setUserID(resp.data.payload._id);
         console.log(userType);
@@ -30,10 +29,10 @@ const Logout = () => {
   }, [getAndVerifyUserInfo]);
 
   function logoutUser() {
-    // API.userLogout (by id, userID) ==> replaces cookie containing JWT with
-    // new cookie (same name) containing ephemeral JWT (lifespan of 1 millisecond)
+     // API.userLogout (por id, userID) ==> substitui o cookie contendo JWT por
+     // novo cookie (mesmo nome) contendo JWT efêmero (vida útil de 1 milissegundo)
     API.userAuthLogout(userID);
-    console.log("logging out");
+    console.log("saindo");
     history.replace("/");
   }
   return (

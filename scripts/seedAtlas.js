@@ -4,13 +4,17 @@ const mongoose = require("mongoose");
 const db = require("../models");
 const userFuncs = require("../controllers/functions");
 
+// o Banco de Dados necessita de novas chaves, estas chaves estão invalidas e foram usadas em outro projeto.
+
+
+
 const users = [
   {
     _id: new mongo.ObjectId("5f29698dda48af2f3c8b8170"),
     type: "Student",
-    firstName: "Joe",
-    lastName: "Tribiani",
-    email: "jtrib@gmail.com",
+    firstName: "João",
+    lastName: "da Silva",
+    email: "dasilva@gmail.com",
     password: "password_**********",
     ID: "",
     grades: [],
@@ -19,9 +23,9 @@ const users = [
   {
     _id: new mongo.ObjectId("5f29698dda48af2f3c8b8171"),
     type: "Student",
-    firstName: "Mary",
-    lastName: "Life",
-    email: "mlife@gmail.com",
+    firstName: "Maria",
+    lastName: "Lídia",
+    email: "mlidia@gmail.com",
     password: "password_**********",
     ID: "",
     grades: [],
@@ -31,8 +35,8 @@ const users = [
     _id: new mongo.ObjectId("5f29698dda48af2f3c8b8172"),
     type: "Student",
     firstName: "Fred",
-    lastName: "George",
-    email: "fGeorge@gmail.com",
+    lastName: "Garcia",
+    email: "fgarcia@gmail.com",
     password: "password_**********",
     ID: "",
     grades: [],
@@ -41,9 +45,9 @@ const users = [
   {
     _id: new mongo.ObjectId("5f29698dda48af2f3c8b8173"),
     type: "Student",
-    firstName: "Rachel",
-    lastName: "Green",
-    email: "rGreen@gmail.com",
+    firstName: "Raquel",
+    lastName: "Souza",
+    email: "rsouzagmail.com",
     password: "password_**********",
     ID: "",
     grades: [],
@@ -52,9 +56,9 @@ const users = [
   {
     _id: new mongo.ObjectId("5f29698dda48af2f3c8b8174"),
     type: "Student",
-    firstName: "Chandler",
-    lastName: "Bing",
-    email: "cBing@gmail.com",
+    firstName: "Charles",
+    lastName: "Miller",
+    email: "cmiller@gmail.com",
     password: "password_**********",
     ID: "",
     grades: [],
@@ -63,10 +67,10 @@ const users = [
   {
     _id: new mongo.ObjectId("5f29698dda48af2f3c8b8175"),
     type: "Teacher",
-    firstName: "Ross",
-    lastName: "Gellar",
-    discipline: "Paleantology",
-    email: "rGellar@gmail.com",
+    firstName: "Leandro",
+    lastName: "Ferreira",
+    discipline: "Paleontologia",
+    email: "lferreira@gmail.com",
     password: "password_**********",
     ID: "",
     grades: [],
@@ -75,10 +79,10 @@ const users = [
   {
     _id: new mongo.ObjectId("5f29698dda48af2f3c8b8176"),
     type: "Teacher",
-    firstName: "Phoebe",
-    lastName: "Buffet",
-    discipline: "Music",
-    email: "pBuffet@gmail.com",
+    firstName: "Calado",
+    lastName: "Ferreira",
+    discipline: "Musica",
+    email: "cferreira@gmail.com",
     password: "password_**********",
     ID: "",
     grades: [],
@@ -88,9 +92,9 @@ const users = [
     _id: new mongo.ObjectId("5f29698dda48af2f3c8b8177"),
     type: "Teacher",
     firstName: "Isaac",
-    lastName: "Assimov",
-    discipline: "Science",
-    email: "iAssimov@gmail.com",
+    lastName: "Newton",
+    discipline: "Ciências",
+    email: "inewton@gmail.com",
     password: "password_**********",
     ID: "",
     grades: [],
@@ -100,10 +104,10 @@ const users = [
 
 const classes = [
   {
-    courseDiscipline: "Science",
-    courseTitle: "The fundamentals of Physics",
+    courseDiscipline: "Ciência",
+    courseTitle: "Os fundamentos da física",
     courseDescription:
-      "This class will cover the basics of physics in regards to mechanical systems as well as electrical and magnetic systems.",
+      "Esta aula cobrirá os fundamentos da física em relação aos sistemas mecânicos, bem como os sistemas elétricos e magnéticos.",
     students: [
       new mongo.ObjectId("5f29698dda48af2f3c8b8170"),
       new mongo.ObjectId("5f29698dda48af2f3c8b8171"),
@@ -113,10 +117,10 @@ const classes = [
     createDate: new Date(),
   },
   {
-    courseDiscipline: "Science",
-    courseTitle: "Experimental Physics",
+    courseDiscipline: "Ciência",
+    courseTitle: "Física Experimental",
     courseDescription:
-      "This class will blur the lines of science and science fiction until the disctintion between the two is limited by only your imagination.",
+      "Esta aula irá confundir as linhas da ciência e da ficção científica até que a distinção entre os dois seja limitada apenas pela sua imaginação.",
     students: [
       new mongo.ObjectId("5f29698dda48af2f3c8b8171"),
       new mongo.ObjectId("5f29698dda48af2f3c8b8174"),
@@ -126,10 +130,10 @@ const classes = [
     createDate: new Date(),
   },
   {
-    courseDiscipline: "Writing",
-    courseTitle: "Creative Writing",
+    courseDiscipline: "Escrita",
+    courseTitle: "Escrita Criativa",
     courseDescription:
-      "This course is more of a structured feedback group. Here we learn how to take an idea of story and turn it into something worth reading.",
+      "Este curso é mais um grupo de feedback estruturado. Aqui aprendemos como pegar uma ideia de história e transformá-la em algo que vale a pena ler.",
     students: [
       new mongo.ObjectId("5f29698dda48af2f3c8b8173"),
       new mongo.ObjectId("5f29698dda48af2f3c8b8174"),
@@ -139,10 +143,10 @@ const classes = [
     createDate: new Date(),
   },
   {
-    courseDiscipline: "Anthropology",
-    courseTitle: "The History of Early Humans",
+    courseDiscipline: "Antropologia",
+    courseTitle: "A história dos primeiros humanos",
     courseDescription:
-      "This class will cover timeline of evolution for early homosapiens.",
+      "Esta aula cobrirá a linha do tempo da evolução dos primeiros homosapiens.",
     students: [
       new mongo.ObjectId("5f29698dda48af2f3c8b8170"),
       new mongo.ObjectId("5f29698dda48af2f3c8b8171"),
@@ -152,16 +156,16 @@ const classes = [
     createDate: new Date(),
   },
   {
-    courseDiscipline: "Music",
-    courseTitle: "Guitar: for beginners",
+    courseDiscipline: "Musica",
+    courseTitle: "Guitarra para iniciantes",
     courseDescription:
-      "This class will cover how to buy a guitar for you, how to set-up your equipment, and then finally how to play said guitar!",
+      "Esta aula abordará como comprar uma guitarra para você, como configurar seu equipamento e, finalmente, seus primeiros acordes!",
     students: [
       new mongo.ObjectId("5f29698dda48af2f3c8b8170"),
       new mongo.ObjectId("5f29698dda48af2f3c8b8171"),
       new mongo.ObjectId("5f29698dda48af2f3c8b8172"),
-      //note below are object ids of Jane Doe guest teacher and John Smith guest Student that have been manually added to database first
-      //purpose is so guest Teacher has a hashed password and you can log in as teacher
+      //observe abaixo os ids de objetos do professor convidado Jane Doe e do aluno convidado John Smith que foram adicionados manualmente ao banco de dados primeiro
+       //o objetivo é que o professor convidado tenha uma senha com hash e você possa fazer login como professor
       new mongo.ObjectId("5f29870a1d6c0327fcd1639f"),
       new mongo.ObjectId("5f29887ef80ae56488c25d6b"),
     ],
@@ -169,10 +173,10 @@ const classes = [
     createDate: new Date(),
   },
   {
-    courseDiscipline: "History",
-    courseTitle: "East Asia History",
+    courseDiscipline: "Historia",
+    courseTitle: "História da Ásia Oriental",
     courseDescription:
-      "This class will cover encompasses the histor of China, Japan and Korea from prehistoric times to the present.",
+      "Esta aula abrangerá a história da China, Japão e Coréia desde os tempos pré-históricos até o presente.",
     students: [
       new mongo.ObjectId("5f29698dda48af2f3c8b8170"),
       new mongo.ObjectId("5f29698dda48af2f3c8b8171"),
@@ -183,10 +187,10 @@ const classes = [
     createDate: new Date(),
   },
   {
-    courseDiscipline: "History",
-    courseTitle: "Ancient China",
+    courseDiscipline: "Historia",
+    courseTitle: "China antiga",
     courseDescription:
-      "This course covers the history of china from the Shang Dynasty(c. 1600–1046 BC) to the Zhou Dynast (c. 1046-256 BC).  Buckle up!",
+      "Este curso abrange a história da China desde a Dinastia Shang (c. 1600–1046 aC) até a Dinastia Zhou (c. 1046-256 aC). Preparar-se!",
     students: [
       new mongo.ObjectId("5f29698dda48af2f3c8b8170"),
       new mongo.ObjectId("5f29698dda48af2f3c8b8171"),
@@ -197,10 +201,10 @@ const classes = [
     createDate: new Date(),
   },
   {
-    courseDiscipline: "History",
-    courseTitle: "East Asia History",
+    courseDiscipline: "Historia",
+    courseTitle: "História da Ásia Oriental",
     courseDescription:
-      "This class will cover encompasses the histor of China, Japan and Korea from prehistoric times to the present.",
+      "Esta aula abrangerá a história da China, Japão e Coréia desde os tempos pré-históricos até o presente.",
     students: [
       new mongo.ObjectId("5f29698dda48af2f3c8b8170"),
       new mongo.ObjectId("5f29698dda48af2f3c8b8171"),
@@ -252,9 +256,9 @@ const seed = async () => {
       await db.ClassroomModel.collection.insertOne(classroom);
     }
 
-    console.log("[seed] : success ");
+    console.log("[seed] : sucesso ");
   } catch {
-    throw new Error("failed to seed database");
+    throw new Error("falha ao propagar o banco de dados");
   }
 };
 

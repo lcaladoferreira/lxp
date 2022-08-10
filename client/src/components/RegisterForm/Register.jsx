@@ -17,14 +17,14 @@ export default function FormDialog(props) {
           onClose={props.close}
           aria-labelledby="form-dialog-title"
         >
-          <DialogTitle id="form-dialog-title">Register</DialogTitle>
+          <DialogTitle id="form-dialog-title">Registre-se</DialogTitle>
           <DialogContent>
             <Radio {...props} />
             <TextField
               autoFocus
               margin="dense"
               id="username"
-              label="First Name*"
+              label="Nome*"
               name='firstName'
               type="name"
               onChange={props.handleInput}
@@ -34,7 +34,7 @@ export default function FormDialog(props) {
               autoFocus
               margin="dense"
               id="username"
-              label="Last Name*"
+              label="Sobrenome*"
               name='lastName'
               type="name"
               onChange={props.handleInput}
@@ -44,7 +44,7 @@ export default function FormDialog(props) {
               autoFocus
               margin="dense"
               id="username"
-              label="Email Address*"
+              label="Email*"
               name='email'
               type="email"
               onChange={props.handleInput}
@@ -53,7 +53,7 @@ export default function FormDialog(props) {
             <TextField
             autoFocus
             id="filled-password-input"
-            label="Password (8-32 characters)*"
+            label="Senha (precisa ter entre 8 e 32 caracteres)*"
             type="password"
             name='password'
             autoComplete="current-password"
@@ -65,7 +65,7 @@ export default function FormDialog(props) {
               autoFocus
               margin="dense"
               id="discipline"
-              label="Primary Discipline (Teacher Only)*"
+              label="Disciplina Principal (Somente para Professores)*"
               name='discipline'
               type="discipline"
               onChange={props.handleInput}
@@ -74,10 +74,10 @@ export default function FormDialog(props) {
           </DialogContent>
           <DialogActions>
             <Button onClick={props.close} color="primary">
-              Cancel
+              Cancelar
             </Button>
             <Button onClick={props.submitRegister} color="primary">
-              Submit
+              Registrar
             </Button>
           </DialogActions>
         </Dialog>

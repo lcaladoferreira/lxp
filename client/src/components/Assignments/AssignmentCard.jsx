@@ -45,7 +45,6 @@ const classes = useStyles();
 
   return (
     <div style={stylin}>
-    {/* <h7>{classTitle}</h7> */}
     <h3>{title}</h3>
     <h5>{description}</h5>
     <div>
@@ -55,11 +54,11 @@ const classes = useStyles();
         href="..."
         className={classes.button}
         startIcon={<CloudUploadIcon />}>
-        Submit Assigment
+        Enviar tarefa
       </Button>
       <FormControlLabel style={stylin3}
         control={<Checkbox icon={<FavoriteBorder />} checkedIcon={<Favorite />} name="checkedH" />}
-        label="Mark as important"
+        label="Marcar como Importante"
       />
     </div>
         </div>

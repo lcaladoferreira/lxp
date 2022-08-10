@@ -1,47 +1,44 @@
 import axios from "axios";
 
 export default {
-  // get cookie, veryify using secret, decode payload
+  // obtém o cookie, verifica usando o segredo, decodifica a carga útil
   readAndVerifyCookie: () => {
     return axios.get("/users/getcookie");
   },
-  // get all users
+  //pega todos os usuários
   users: function () {
     return axios.get("/users");
   },
-  // user login
+  // login de usuário
   userLogin: function (userObj) {
     return axios.post("/users/login", userObj);
   },
-  // user authorization => click logout => ephemeral token time => redirect to "/"
+  // autorização do usuário => clique em sair => hora do token efêmero => redirecionar para "/"
   userAuthLogout: function (id) {
     return axios.get(`/users/logout/${id}`);
   },
-  // user register
+  // cadastro do usuário
   userRegister: function (userObj) {
     return axios.post("/users/register", userObj);
   },
-  // get user auth and type by id
+  // obtém a autenticação do usuário e digita por id
   userAuthAndType: function (userObj) {
     return axios.get("/users/:id", userObj);
   },
-  // user logout
+  // logout do usuário
   userLogout: function (userObj) {
     return axios.get("/users/logout", userObj);
   },
-  // user update info
+  // informações de atualização do usuário
   userUpdate: function (userObj) {
     return axios.put("/users/:id", userObj);
   },
-  // getting user by id
+  // pegando usuário por id
   getUserbyId: function (id) {
     return axios.get("/users/" + id);
   },
 
-  // classesByUser: function() {
-  //     return axios.get('api/user/classes/')
-  // },
-  // get classes
+  //pega as aulas
   getClasses: function () {
     return axios.get("/api/classrooms");
   },
@@ -60,9 +57,6 @@ export default {
     );
   },
 
-  // getClass: function (id) {
-  //     return axios.get("api/classrooms/" + id)
-  // },
 
   updateClassImage: function (id, image) {
     return axios.post("/api/classrooms/image/" + id, image, {

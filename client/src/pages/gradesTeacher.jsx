@@ -1,28 +1,23 @@
 import React, { useEffect, useState, useCallback } from "react";
 import Gradebook from "../components/MaterialTables/GradebookTable.jsx";
 import AssignmentsTable from "../components/MaterialTables/AssignmentTable.jsx";
-// import Container from "../components/Container/Container.jsx";
-// import Dashboard from '../components/Grades/TeacherDashboard'
-// import MaterialTable from "material-table";
-// import RootContext from '../utils/RootContext.js';
 import API from "../utils/API";
 import history from "../history/history.jsx";
 import PropTypes from "prop-types";
 import { Tab, Tabs, AppBar, Box, Typography } from "@material-ui/core";
 
-// creating a gradebook that is student (n) responsive
-// similar to a relational database (x, y col/row)
-// perhaps utilize a drop box and/or tabs to
-// toggle various assigments
-// always display a cumulative grade
-// incorporate charts.js npm to model
-// bell curve distribution
+// criando um boletim de notas que é responsivo ao aluno (n)
+// semelhante a um banco de dados relacional (x, y col/linha)
+// talvez utilize uma caixa suspensa e/ou guias para
+// alterna várias atribuições
+// sempre exibe uma nota cumulativa
+// incorpora charts.js npm ao modelo
+// distribuição da curva de sino
 // https://www.npmjs.com/chart.js
 // https://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/demo/bellcurve/
 
 const GradesTeacher = (props) => {
-  // const { userType, userID } = useContext(RootContext);
-  // const [currentClassObj, setCurrentClassObj] = useState([]);
+
   const [userID, setUserID] = useState("");
   const [userType, setUserType] = useState("");
   const [classID, setClassID] = useState("");
@@ -33,12 +28,12 @@ const GradesTeacher = (props) => {
   const getAndVerifyUserInfo = useCallback(() => {
     API.readAndVerifyCookie()
       .then((resp) => {
-        console.log("cookie call resp: ", resp);
-        console.log("dropping the payload: ", resp.data.payload);
+        console.log("cookie chamando resp: ", resp);
+        console.log("baixando a carga: ", resp.data.payload);
         setUserType(resp.data.payload.type);
         setUserID(resp.data.payload._id);
         selectLastTab();
-        //load the classes after the userID And userType are received from token
+        //carrega as classes após o userID e userType serem recebidos do token
       })
       .catch((error) => {
         console.log(error);
@@ -61,11 +56,6 @@ const GradesTeacher = (props) => {
 
         setStudentArr(studentsData);
 
-        // for (assignments of resp.data.assignments) {
-        //     // console.log(assignments)
-        //     gradebook.columnsGradeBook.push(assignments.title)
-        // }
-
         setAssignmentArr(assignmentsData);
       })
       .catch((err) => console.log(err));
@@ -78,17 +68,14 @@ const GradesTeacher = (props) => {
   };
 
   useEffect(() => {
-    // let mounted = true;
+    
     const loadInfo = async () => {
       await getAndVerifyUserInfo();
       await loadClassInfo();
     };
 
     loadInfo();
-    // console.log('useEffect Assignments', assignments)
-    // console.log('useEffect Tab Value', tabValue)
-
-    // return () => mounted = false;
+    
   }, [getAndVerifyUserInfo, loadClassInfo]);
 
   function selectLastTab() {
@@ -96,9 +83,9 @@ const GradesTeacher = (props) => {
 
     console.log(value);
     if (!value) {
-      console.log("welcome to gradebook page");
+      console.log("bem-vindo à página do boletim de notas");
     } else {
-      console.log("Welcome back");
+      console.log("Bem vindo de volta");
       setTabValue(value);
     }
   }
@@ -160,40 +147,4 @@ const GradesTeacher = (props) => {
 
 export default GradesTeacher;
 
-// onRowAdd: newData =>
-// new Promise(resolve => {
-//     setTimeout(() => {
-//         resolve();
-//         setGradebook(prevState => {
-//             const data = [...prevState.data];
-//             data.push(newData);
-//             return { ...prevState, data };
-//         });
-//     }, 600);
-// }),
-// onRowUpdate: (newData, oldData) =>
-// new Promise(resolve => {
-//     setTimeout(() => {
-//         resolve();
-//         if (oldData) {
-//             setGradebook(prevState => {
-//                 console.log(prevState);
-//                 const data = [...prevState.data];
-//                 data[data.indexOf(oldData)] = newData;
-//                 return { ...prevState, data };
-//             });
-//         }
-//     }, 600);
-// }),
-// onRowDelete: oldData =>
-// new Promise(resolve => {
-//     setTimeout(() => {
-//         resolve();
-//         setGradebook(prevState => {
-//             const data = [...prevState.data];
-//             data.splice(data.indexOf(oldData), 1);
-//             return { ...prevState, data };
-//         });
-//     }, 600);
-// })
-// }}
+

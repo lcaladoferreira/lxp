@@ -39,7 +39,7 @@ export default function TeachDashboard() {
   const [selectedIndex, setSelectedIndex] = React.useState(1);
 
   const handleClick = () => {
-    console.info(`You clicked ${options[selectedIndex]}`);
+    console.info(`Você clicou ${options[selectedIndex]}`);
   };
 
   const handleMenuItemClick = (event, index) => {
@@ -68,16 +68,16 @@ export default function TeachDashboard() {
       alignItems="stretch">
         <Grid item xs={6}>
           <Paper className={classes.paper}>
-          <h5>Add an assignment:</h5>
+          <h5>Adicionar uma tarefa:</h5>
               <form className={classes.root} noValidate autoComplete="off">
-                  <TextField fullWidth id="standard-basic" label="Assignment Title" />
-                  <TextField fullWidth id="standard-basic" label="Assignment Due Date" />
+                  <TextField fullWidth id="standard-basic" label="Título da tarefa" />
+                  <TextField fullWidth id="standard-basic" label="Data de Vencimento da Atribuição" />
                   <TextField fullWidth
                     id="outlined-multiline-static"
-                    label="Description:"
+                    label="Descrição:"
                     multiline
                     rows="8"
-                    defaultValue="Add the description of the assignment here"
+                    defaultValue="Adicione a descrição da tarefa aqui"
                     variant="outlined"
                   />
                 </form>
@@ -85,7 +85,7 @@ export default function TeachDashboard() {
         </Grid>
         <Grid item xs={6}>
           <Paper className={classes.paper}>
-          <h5>Preview assignment:</h5>
+          <h5>Atribuição de visualização:</h5>
          
           </Paper>
         </Grid>
@@ -136,7 +136,7 @@ export default function TeachDashboard() {
             </Popper>
             <h8>&nbsp;&nbsp;&nbsp;</h8>
             <Button variant="contained" color="primary"> 
-                  SUBMIT
+                  ENVIAR
             </Button>
           </Paper>
         </Grid>

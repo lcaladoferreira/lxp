@@ -2,28 +2,27 @@ const db = require("../models");
 const fs = require("fs");
 const { RegisterModel } = require("../models");
 const { register } = require("../client/src/serviceWorker");
-// const func = require('./functions');
 
 module.exports = {
-  //Find all method is meant to find all classsRooms in the classroom schema
-  //My need to add a component to this where we are finding all the classroom for a specific student or teacher
+  //O método Find all destina-se a encontrar todas as salas de aula  
+  //Pode ser necessário adicionar um componente a isto.
   findAll: function (req, res) {
-    console.log("searching classes...");
+    console.log("procurando salas de aula...");
     console.log(req.query);
 
     let query = {};
 
     if (req.query.select === "all") {
-      //gets all classes regardless of what they type in the input
+      // obtém todas as classes, independentemente do que eles digitam na entrada
       query = query;
     } else if (req.query.select === "courseTitle") {
       query.courseTitle = { $regex: req.query.input, $options: "i" };
     } else if (req.query.select === "courseDescription") {
-      //This query uses $regex which allows a regular expression to be delivered to mongoDb.
-      //the $options: 'i'  is a mongoDb operator that specifies case insensitivity.  Will match upper and lowercases in the field string I am searchin
+      //Esta consulta usa $regex que permite que uma expressão regular seja entregue ao mongoDb.
+      //the $options: 'i' é um operador mongoDb que especifica a diferenciação entre maiúsculas e minúsculas. Irá corresponder letras maiúsculas e minúsculas na string de campo que estou pesquisando
       query.courseDescription = { $regex: req.query.input, $options: "i" };
     } else if (req.query.select === "subject") {
-      //right now this just does same as the All
+      //agora isso apenas faz o mesmo que o All
       query.courseDiscipline = { $regex: req.query.input, $options: "i" };
       query = query;
     }
@@ -37,19 +36,19 @@ module.exports = {
       .catch((err) => res.status(422).json(err));
   },
 
-  //This method is meant to find a specific classroom by Id.  This will be used when wanting to pull up a specific classroom page
+  //Este método destina-se a encontrar uma sala de aula específica por Id. Isso será usado quando quiser abrir uma página de sala de aula específica
   findById: function (req, res) {
-    console.log("finding class by id ...");
+    console.log("encontrando salas de aula por id ...");
     db.ClassroomModel.findById(req.params.id)
       .populate({ path: "announcements" })
       // .populate({path:'comments'})
       .exec((error, dbModel) => res.json(dbModel));
   },
 
-  // populating student info
+  //preenchendo as informações do aluno
   // route: "api/classrooms/populate/:id"
   findByIdandPopulate: function (req, res) {
-    console.log("populating ...");
+    console.log("preechendo ...");
     console.log(req.params.id);
 
     db.ClassroomModel.findById(req.params.id)
@@ -78,8 +77,8 @@ module.exports = {
       });
   },
 
-  //This will be used to create a classroom.  Goal is for only a user that is a teacher to be able to do this.  Will need user Authentification
-  //Currenlty using req.body and understand that may need to be manipulated more when updating the schema
+  //Isso será usado para criar uma sala de aula. O objetivo é que apenas um usuário que seja professor possa fazer isso. Precisará de autenticação do usuário
+   //Currenlty usando req.body e entenda que pode precisar ser mais manipulado ao atualizar o esquema
   create: function (req, res) {
     console.log(req.body);
 
@@ -93,25 +92,25 @@ module.exports = {
     db.ClassroomModel.create(newClass)
       .then((dbModel) => {
         res.json(dbModel);
-        console.log("course created");
+        console.log("curso criado");
       })
       .catch((err) => res.status(422).json(err));
   },
 
-  //This will update a current classrooms information, assignments, title, descript, but not something that is an array of obect ids
-  //Certain aspects of this will need user verification because a Teacher will have more ability to change things about classroom
-  //Currenlty using req.body and understand that may need to be manipulated more when updating the schema
+  //Isto atualizará as informações atuais das salas de aula, atribuições, título, descrição, mas não algo que seja uma matriz de ids de objetos
+  // Certos aspectos disso precisarão de verificação do usuário porque um professor terá mais capacidade de mudar as coisas na sala de aula
+  //Currenlty usando req.body e entenda que pode precisar ser mais manipulado ao atualizar o esquema
   update: function (req, res) {
     db.ClassroomModel.findOneAndUpdate({ _id: req.params.id }, req.body)
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));
   },
 
-  //This is used to place a student into a classroom
-  //Route: "api/classrooms/:id/addStudent"
-  //:id is class id, student id is sent through the body
+  //Isso é usado para colocar um aluno em uma sala de aula
+   //Rota: "api/classrooms/:id/addStudent"
+   //:id é o id da turma, o id do aluno é enviado pelo corpo
   AddStudentToClass: async function (req, res) {
-    console.log("adding student to class ...");
+    console.log("adicionando o aluno em turma ...");
 
     const userID = req.body.id;
     const classroomID = req.params.id;
@@ -121,9 +120,9 @@ module.exports = {
         .status(500)
         .json({
           error: 2,
-          msg: "User must create an account to join a class.",
+          msg: "O usuário deve criar uma conta para participar de uma turma.",
         });
-      throw new Error("User is does not exist in database");
+      throw new Error("O usuário não existe no banco de dados");
     }
     try {
       const findUserRequestingToJoin = await db.RegisterModel.findOne({
@@ -140,15 +139,15 @@ module.exports = {
     } catch (err) {
       res.status(500).json({
         error: 1,
-        msg: "User was not added to the class.  Please try again later!",
+        msg: "O usuário não foi adicionado à classe. Por favor, tente novamente mais tarde!",
       });
 
-      throw new Error(`Error adding the user to the class: ${err}`);
+      throw new Error(`Erro ao adicionar o usuário à classe: ${err}`);
     }
   },
 
-  //This will remove the classroom
-  //User verfication needed because only a teach can remove a classroom
+  //Isto irá remover a sala de aula 
+  //É necessária a verificação do usuário porque apenas um professor pode remover uma sala de aula
   remove: function (req, res) {
     db.ClassroomModel.findById({ _id: req.params.id })
       .then((dbModel) => dbModel.remove())
@@ -165,10 +164,10 @@ module.exports = {
       .catch((err) => res.status(422).json(err));
   },
 
-  //This code is specifically for when adding an image to the classroom card.  req.file is created using the multer npm
-  //If it is too bulky we can always make a specific route
-  //If confused I followed steps in this link: https://medium.com/@colinrlly/send-store-and-show-images-with-react-express-and-mongodb-592bc38a9ed
-  //It allows that image to be uploaded to a folder called uploaded.  Then it is saved to the mongo database when delivered as an object in findOneandUpdat
+  //Este código é especificamente para adicionar uma imagem ao cartão da sala de aula. req.file é criado usando o multer npm
+   //Se for muito volumoso podemos sempre fazer uma rota específica
+   //Se confuso, siga os passos deste link: https://medium.com/@colinrlly/send-store-and-show-images-with-react-express-and-mongodb-592bc38a9ed
+   //Permite que essa imagem seja carregada em uma pasta chamada uploaded. Em seguida, ele é salva no banco de dados mongo quando entregue como um objeto em findOneandUpdat
   updateClassImage: function (req, res) {
     const newData = {
       image: {
@@ -180,7 +179,7 @@ module.exports = {
     db.ClassroomModel.findOneAndUpdate({ _id: req.params.id }, newData)
       .then((dbModel) => {
         console.log("updated");
-        //deletes the file from the temporary uploads folder
+        //exclui o arquivo da pasta de uploads temporários
         fs.unlinkSync(req.file.path);
         res.json(dbModel);
       })
@@ -236,8 +235,6 @@ module.exports = {
         res.json(updatedAnnouncement);
       });
     });
-
-    // .catch(err => console.log(err))
   },
 
   findAuthorById: function (req, res) {
@@ -246,17 +243,11 @@ module.exports = {
     db.AnnouncementModel.find({ comments: { _id: req.body.id } }).then(
       (resp) => {
         console.log("got the response", resp);
-        // if (resp.alias) {
-        //   res.json({ alias: resp.alias })
-        // } else {
-        //   const fullName = resp.firstName + " " + resp.lastName
-        //   res.json({ name: fullName })
-        // }
       }
     );
   },
 
-  //This function will find all the classes that the user is either a student or a teacher for
+  //Esta função irá encontrar todas as aulas em que o usuário é aluno ou professor
   findClassesByUser: function (req, res) {
     console.log(req.params.id);
 
@@ -294,7 +285,6 @@ module.exports = {
           { _id: req.params.id },
           { $push: { assignments: dbModel._id } }
         )
-          // .populate({ path: 'assignments' })
           .exec((err, updatedClass) => {
             console.log("post update", updatedClass);
             res.json(updatedClass);
@@ -325,9 +315,6 @@ module.exports = {
           return index > 3;
         });
 
-        // if(gradesArr.length != keysArr.length )
-        // throw new Error('Error: grades array length does not match keys Arr length')
-
         console.log(titleArr);
         console.log(gradesArr);
 
@@ -336,16 +323,9 @@ module.exports = {
             for (i = 0; i < titleArr.length; i++) {
               let titleItem = titleArr[i];
               let gradeItem = gradesArr[i];
-
-              // await db.AssignmentModel
-              //   .findOne({ title: { $regex: titleItem, $options: 'i' } })
-              //   .then(assignmentModel => {
-              // console.log('assignment return', assignmentModel)
-              // console.log('assignment id ', assignmentModel._id)
-
-              console.log("assignment title", titleItem);
-              console.log("class ID ", resp._id);
-              console.log("grade ", gradeItem);
+              console.log("título da tarefa", titleItem);
+              console.log("ID da Sala de aula ", resp._id);
+              console.log("materia ", gradeItem);
 
               db.RegisterModel.findOneAndUpdate(
                 { ID: req.body.ID },
@@ -359,27 +339,26 @@ module.exports = {
                   },
                 }
               ).then((updatedUser) => {
-                console.log("updated user: ", updatedUser);
+                console.log("usuário atualizado: ", updatedUser);
                 res.json(updatedUser);
               });
-              //  })
             }
           }
           saveloop();
         } catch (err) {
-          console.log("error in save loop", err);
+          console.log("erro ao salvar loop", err);
         }
       });
   },
 
   getGrades: function (req, res) {
-    //need userID as param,
+    //precisa de userID como parâmetro,
 
-    //go into register model and get grades array which has
-    // class ID, assignment ID, grade
+     // entra no modelo de registro e obtém o array de notas que tem
+     // ID da turma, ID da tarefa, nota
 
-    //use assignment ID to get assignment title
-    // attach to grade and send back json with array
+     // usa o ID da atribuição para obter o título da atribuição
+     // anexa à nota e envia de volta json com array
 
     db.RegisterModel.findById(req.params.id).then((user) => {
       const userGradesArr = user.grades.map((grade) => {

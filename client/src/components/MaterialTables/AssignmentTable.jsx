@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import MaterialTable from 'material-table';
 import API from '../../utils/API';
-// import history from '../../history/history';
+
 
 function AssignmentTable (props) {
 
     const [classID, setClassID] = useState()
     const [assignments, setAssignments] = useState({
         columnsAssignment: [
-            { title: "Title", field: "title" },
-            { title: "Description", field: "description" },
-            { title: "Attachments", field: "attachments" },
+            { title: "Titulo", field: "title" },
+            { title: "Descrição", field: "description" },
+            { title: "Anexos", field: "attachments" },
         ],
         data: props.assignments.map(assignment => {
             const obj = {
@@ -37,13 +37,13 @@ function AssignmentTable (props) {
 
 return (
     <MaterialTable
-    title="Assignments"
+    title="Atribuições"
     columns={assignments.columnsAssignment}
     data={assignments.data}
     actions={[
         {
-          icon: 'save',
-          tooltip: 'Save Assignment',
+          icon: 'salvar',
+          tooltip: 'Salvar Atribuições',
           onClick: (event, rowData) => {
               API.createAssignment(classID, rowData)
                 .then(resp => {
@@ -54,7 +54,7 @@ return (
           }
         },
     ]}
-    //Code inside of the editable props is mostly boiler plate code provided by material-table for client-side rendering to the table
+    //O código dentro dos adereços editáveis é principalmente o código da placa de caldeira fornecido pelo material-table para renderização do lado do cliente para a tabela
     editable={{
         onRowAdd: newData =>
             new Promise(resolve => {

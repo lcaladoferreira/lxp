@@ -18,7 +18,7 @@ const AssignmentSchema = new Schema(
   },
   {
     toJSON: {
-      // include any virtual properties when data is requested
+      // inclui quaisquer propriedades virtuais quando os dados são solicitados
       virtuals: true
     }
   }

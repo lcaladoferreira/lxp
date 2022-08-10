@@ -23,6 +23,5 @@ export default function Conditional() {
   }
   
 ReactDOM.render(
-	// <Input />,
 	document.getElementById('app')
 );

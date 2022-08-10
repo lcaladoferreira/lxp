@@ -2,11 +2,10 @@ import React from "react";
 import "./NavbarStudent.css";
 import Questions from "../../../images/feynman.jpg";
 import { Link } from "react-router-dom";
-// import { Fade } from '@material-ui/core';
+
 
 const NavbarStudent = () => {
-  // useState expanded and setExpanded onClick
-  // circle back putas
+  // useState expandido e setExpanded onClick
   return (
     <React.Fragment>
       <div className="navbar-fixed col-md-8">
@@ -22,7 +21,7 @@ const NavbarStudent = () => {
               width="155px"
             />
           </Link>
-          {/* The below a tag is the code that renders the hamburger menu when the size of the screen is minimized */}
+          {/* A tag abaixo é o código que renderiza o menu quando o tamanho da tela é minimizado */}
           <a
             href="/"
             data-target="mobile-demo"
@@ -45,7 +44,7 @@ const NavbarStudent = () => {
                 window.location.pathname === "/Classroom" ? "active" : ""
               }
             >
-              <Link to="/Classroom">Classroom</Link>
+              <Link to="/Classroom">Sala de Aula</Link>
             </li>
             <li
               className={`nav-item
@@ -56,7 +55,7 @@ const NavbarStudent = () => {
                             }
                             `}
             >
-              <Link to="/activitiesStudent">Activities</Link>
+              <Link to="/activitiesStudent">Tarefas</Link>
             </li>
             <li
               className={`nav-item
@@ -67,7 +66,7 @@ const NavbarStudent = () => {
                             }
                             `}
             >
-              <Link to="/assignmentsStudent">Assignments</Link>
+              <Link to="/assignmentsStudent">Tarefas</Link>
             </li>
             <li
               className={`nav-item
@@ -78,19 +77,19 @@ const NavbarStudent = () => {
                             }
                             `}
             >
-              <Link to="/gradesStudent">Grades</Link>
+              <Link to="/gradesStudent">Matérias</Link>
             </li>
             <li
               className={window.location.pathname === "/syllabusStudent" ? "active" : ""}
             >
-              <Link to="/syllabusStudent">Syllabi</Link>
+              <Link to="/syllabusStudent">Programa de estudos</Link>
             </li>
             <li
               className={
                 window.location.pathname === "/logout" ? "active" : ""
               }
             >
-              <Link to="/logout">Logout</Link>
+              <Link to="/logout">Sair</Link>
             </li>
           </ul>
         </nav>

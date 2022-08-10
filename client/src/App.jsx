@@ -7,21 +7,16 @@ import Grades from "./pages/gradesTeacher.jsx";
 import Login from "./pages/login.jsx";
 import Logout from "./pages/logout.jsx";
 import Search from "./pages/search.jsx";
-// import Register from './components/RegisterForm/Register.jsx';
 import Classroom from "./pages/Classroom.jsx";
 import Footer from "./components/Footer/Footer.jsx";
 import Wrapper from "./components/Wrapper/Wrapper.jsx";
-// import RootContext from './utils/RootContext';
 // https://github.com/ReactTraining/react-router/blob/master/packages/react-router/docs/api/Router.md
-// Extensive documentation on history, its usage, and custom methods
-// note: history = createBrowserHistory(); keyLength of location.key defaults to 6; set to 12
-// see more about BrowserRouter options https://github.com/ReactTraining/react-router/blob/master/packages/react-router-dom/docs/api/BrowserRouter.md
+// Documentação extensa sobre histórico, seu uso e métodos personalizados
+// nota: history = createBrowserHistory(); keyLength de location.key é padronizado como 6; definido para 12
+// veja mais sobre as opções do BrowserRouter https://github.com/ReactTraining/react-router/blob/master/packages/react-router-dom/docs/api/BrowserRouter.md
 import history from "./history/history.jsx";
 
 const App = () => {
-  // const [userType, setUserType ] = useState('')
-  // const [userID, setUserID ] = useState('')
-  // const [classID, setClassID ] = useState('')
 
   history.listen((location, action) => {
     console.log(

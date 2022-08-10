@@ -1,11 +1,11 @@
 const mongoose = require("mongoose");
 const db = require("../models");
 
-// This file empties the Books collection and inserts the books below
+// Este arquivo esvazia a coleção Books e insere os livros abaixo
+// o Banco de Dados necessita de novas chaves, estas chaves estão invalidas e foram usadas em outro projeto.
 
-// const MONGODB_URI = `mongodb://${process.env.DB_USER}:${process.env.DB_PASSWORD}@ds127260.mlab.com:27260/heroku_zpz7kd01`
-// console.log(MONGODB_URI)
-mongoose.connect("mongodb://localhost/ProjectThree", {
+
+mongoose.connect("mongodb://localhost/lxpProject", {
   useNewUrlParser: true,
   useFindAndModify: false,
   useCreateIndex: true,
@@ -14,22 +14,21 @@ mongoose.connect("mongodb://localhost/ProjectThree", {
 
 const AsssignmentSeed = [
   {
-    title: "seed assignment title",
-    body: "seeded assigmment body",
+    title: "título de atribuição de sementes",
+    body: "corpo de atribuição semeado",
   },
 ];
 
 const AnnouncementSeed = [
   {
-    title: "seededAnnouncement title",
-    body: "seeded Announcement body",
+    title: "Título do anúncio semeado",
+    body: "corpo de anúncio semeado",
   },
 ];
 db.AssignmentModel.remove({})
   .then(() => db.AssignmentModel.collection.insertMany(AsssignmentSeed))
   .then((data) => {
-    console.log(data.result.n + " records inserted!");
-    // process.exit(0);
+    console.log(data.result.n + " registros inseridos!");
   })
   .catch((err) => {
     console.error(err);
@@ -39,7 +38,7 @@ db.AssignmentModel.remove({})
 db.AnnouncementModel.remove({})
   .then(() => db.AnnouncementModel.collection.insertMany(AnnouncementSeed))
   .then((data) => {
-    console.log(data.result.n + " records inserted!");
+    console.log(data.result.n + " registros inseridos!");
     process.exit(0);
   })
   .catch((err) => {

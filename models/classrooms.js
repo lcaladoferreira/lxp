@@ -3,13 +3,13 @@ const Schema = mongoose.Schema;
 
 const ClassroomSchema = new Schema(
   {
-    // select from an array of disciplines
-    // use filter
+    // seleciona de um array de disciplinas
+     // usa filtro
     courseDiscipline: {
       type: String,
       trim: true,
     },
-    // courses within parent discipline
+    // cursos dentro da disciplina 
     courseTitle: {
       type: String,
       trim: true,
@@ -21,18 +21,17 @@ const ClassroomSchema = new Schema(
     credits: {
       type: Number,
       trim: true,
-      // validate: /^[0-9]{0,1}\z/
+      // valida: /^[0-9]{0,1}\z/
     },
     students: [
       {
-        // has [] wrapping the {} !!!!!!!!!!
+        // tem [] envolvendo o {} !!!!!!!!!!
         type: Schema.Types.ObjectId,
         ref: 'Register',
       }
     ],
     teacherID: {
       type: Schema.Types.ObjectId,
-      // type: String,
       ref: 'Register',
       required: true
     },
@@ -43,7 +42,6 @@ const ClassroomSchema = new Schema(
     assignments: [
       {
       type: Schema.Types.ObjectId,
-        // type: String,
         ref: 'Assignment',
         required: true
     }
@@ -56,7 +54,6 @@ const ClassroomSchema = new Schema(
     announcements: [
       {
         type: Schema.Types.ObjectId,
-        // type: String,
         ref: 'Announcement',
         required: true
       }
@@ -64,22 +61,14 @@ const ClassroomSchema = new Schema(
   },
 
   // Mongoose Virtuals https://mongoosejs.com/docs/tutorials/virtuals.html
-  // a property not stored in MongoDB
-  // virtuals typically used for computed properties on documents
-  // setting virtuals to true to pass properties to response.json()
+  // uma propriedade não armazenada no MongoDB
+  // virtuais normalmente usados para propriedades computadas em documentos
+  // configurando virtuals para true para passar propriedades para response.json()
   {
     toJSON: {
       virtuals: true
     }
   });
-
-// https://mongoosejs.com/docs/api/virtualtype.html#virtualtype_VirtualType-get
-// incorporate dynamically-created properties to workoutSchema
-// workoutSchema.virtual("totalDuration").get(function () {
-//     return this.exercises.reduce((total, exercise) => {
-//         return total+exercise.duration
-//     }, 0)
-// });
 
 const ClassroomModel = mongoose.model("Classroom", ClassroomSchema);
 

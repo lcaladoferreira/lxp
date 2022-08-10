@@ -3,9 +3,9 @@ const db = require('../models')
 
 module.exports = {
 
-//This is a function that will automatically generate a student Id for a student user
-//Id generated is based on first and last name.  If someone with the same username exists in database it is incremented by 1.
-//first and last name parameters are strings
+//Esta é uma função que irá gerar automaticamente um ID de aluno para um usuário aluno
+//Id gerado é baseado no nome e sobrenome. Se alguém com o mesmo nome de usuário existir no banco de dados, ele será incrementado em 1.
+//parâmetros de nome e sobrenome são strings
  studentIdGenerator: function(firstname, lastname) {
     const first = firstname.toLowerCase()
     const last = lastname.toLowerCase()
@@ -47,5 +47,3 @@ urlHttpToHttps: function(url) {
 }
 
 }
-
-// studentIdGenerator(firstName, lastName);

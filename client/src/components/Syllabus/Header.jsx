@@ -24,48 +24,48 @@ export default function Header() {
       <Grid container spacing={3}>
         <Grid item xs={12}>
           <Paper className={classes.paper}>
-            <h2>Upload your syllabi:</h2>
+            <h2>Carregue seu programa de estudos:</h2>
           </Paper>
         </Grid>
         <Grid item xs={12} sm={3}>
           <Paper className={classes.paper}>
-            <h5>Class 1</h5>
-            <h6>Tu/Th 2-4:00pm</h6>
-            <h6>28 students</h6>
+            <h5>Classe 1</h5>
+            <h6>terças/quartas 14:00-16:00</h6>
+            <h6>28 alunos</h6>
             <Button
                 variant="contained"
                 color="default"
                 href="..."
                 className={classes.button}
                 startIcon={<CloudUploadIcon />}>
-                Upload Syllabus
+                Carregar programa de estudos
             </Button>
-            <h7>placeholder, make them into cards</h7>
+            <h7>placeholder, transformá-los em cartões</h7>
           </Paper>
         </Grid>
         <Grid item xs={12} sm={3}>
           <Paper className={classes.paper}>
-            <h5>Class 1</h5>
-            <h6>Tu/Th 2-4:00pm</h6>
-            <h6>28 students</h6>
+            <h5>Classe 1</h5>
+            <h6>terças/quartas 14:00-16:00</h6>
+            <h6>28 alunos</h6>
             <Button
                 variant="contained"
                 color="default"
                 href="..."
                 className={classes.button}
                 startIcon={<CloudUploadIcon />}>
-                Upload Syllabus
+                Carregar programa de estudos
             </Button>
           </Paper>
         </Grid>
         <Grid item xs={12} sm={3}>
           <Paper className={classes.paper}>
-                Class3
+                Classe 3
           </Paper>
         </Grid>
         <Grid item xs={12} sm={3}>
           <Paper className={classes.paper}>
-                Class4
+                Classe 4
           </Paper>
         </Grid>
       </Grid>  

@@ -4,8 +4,6 @@ import Container from '../components/Container/Container.jsx'
 import Card from '../components/Card/Card.jsx';
 import { Form, Input } from '../components/LoginForm/LoginForm.jsx';
 import API from '../utils/API';
-// import History from '../history/history.jsx';
-// import RootContext from '../utils/RootContext';
 import '../index.css';
 import './pageStyle/login.css'
 import history from '../history/history.jsx';
@@ -16,11 +14,11 @@ const stylin = {
 
 const Login = () => {
 
-    // const { userType, setUserType, userID, setUserID } = useContext(RootContext)
+    
     const [loginForm, setLoginForm] = useState({})
     const [registerForm, setRegisterForm] = useState({})
     const [openDialog, setOpenDialog] = useState(false);
-    // const [redirectUser, setRedirectUser] = useState(false);
+   
   
     const handleRegisterOpen = () => {
         setOpenDialog(true);
@@ -42,11 +40,11 @@ const Login = () => {
 
     function handleRegisterSubmit(event) {
         console.log(registerForm);
-        console.log('submitting register');
+        console.log('enviando registro');
         event.preventDefault();
         if (registerForm.email && registerForm.password && registerForm.type) {
             console.log(registerForm)
-            console.log('Register looks good so far')
+            console.log('Registro parece bom até agora')
             API.userRegister(registerForm)
                 .then(resp => {
                     console.log(resp)
@@ -62,7 +60,7 @@ const Login = () => {
     function handleFormSubmit(event) {
         event.preventDefault();
         if (loginForm.email && loginForm.password) {
-            console.log('contains email & password')
+            console.log('contém e-mail e senha')
             API.userLogin({
                 username: loginForm.email,
                 password: loginForm.password,
@@ -79,17 +77,16 @@ const Login = () => {
 
     return (
         <Container fluid>
-            {/* <div className="text-white">Login</div> */}
             <div className='row valign-wrapper'>
                 <div className='col s4'></div>
                 <div className='loginform col s6 center-align'>
                     <Card
-                        title={<i>Login Here</i>}
+                        title={<i>Ingresse</i>}
                         size={'medium'}
                         color={'blue-grey'}
                         customclass={'darken-1 center'}
-                        action={<button type="submit" onClick={handleFormSubmit} disabled={!(loginForm.email && loginForm.password)} className="waves-effect waves-light btn-large">LOGIN</button>}
-                        bottomLink={<p>Don't have an account? <button className='linkButton' onClick={handleRegisterOpen} >Register Here!</button></p>}
+                        action={<button type="submit" onClick={handleFormSubmit} disabled={!(loginForm.email && loginForm.password)} className="waves-effect waves-light btn-large">Ingressar</button>}
+                        bottomLink={<p>Não tem uma conta? <button className='linkButton' onClick={handleRegisterOpen} >Registre-se aqui!</button></p>}
                     >
                         <div className='row'>
                             <Form size={'col s12'}>
@@ -108,7 +105,7 @@ const Login = () => {
                                         className="inputLogin"
                                         size='s12'
                                         name='password'
-                                        label='Password :'
+                                        label='Senha :'
                                         type='password'
                                         required='password'
                                         customclass='validate center'

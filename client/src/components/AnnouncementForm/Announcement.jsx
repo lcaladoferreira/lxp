@@ -19,7 +19,7 @@ export default function FormDialog(props) {
           onClose={props.close}
           aria-labelledby="form-dialog-title"
         >
-          <DialogTitle id="form-dialog-title">Add Announcement</DialogTitle>
+          <DialogTitle id="form-dialog-title">Adicionar anúncio</DialogTitle>
           <DialogContent>
             <TextField
               autoFocus

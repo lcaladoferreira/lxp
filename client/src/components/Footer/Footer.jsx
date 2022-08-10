@@ -14,7 +14,7 @@ const style = {
 const Footer = () => {
     return (
         <footer style={style}>
-                    <div className='center'>©2020</div>
+                    <div className='center'>feito com react e mongoDB</div>
         </footer>
     )
 };

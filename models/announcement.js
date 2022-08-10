@@ -6,12 +6,12 @@ const AnnouncementSchema = new Schema(
       title: {
         type: String,
         trim: true,
-        required: "Enter an announcement title"
+        required: "Insira um título de anúncio"
       },
       body: {
         type: String,
         trim: true,
-        required: "Enter an announcement message"
+        required: "Insira um título de menssagem"
       },
       attachment: {
         type: String,
@@ -24,7 +24,6 @@ const AnnouncementSchema = new Schema(
       comments: [
         {
         type: Schema.Types.ObjectId,
-        // type: String,
         ref: 'Comment',
         required: true
         }
@@ -37,15 +36,15 @@ const AnnouncementSchema = new Schema(
     },
     {
       toJSON: {
-        // include any virtual properties when data is requested
+        // inclui quaisquer propriedades virtuais quando os dados são solicitados
         virtuals: true
       }
     })
 
-    // AnnouncementSchema.virtual("commentAuthor").get(function () {
-    //   // "reduce" array of exercises down to just the sum of their durations
-    //   return this.comments.populate({path: 'author'})
-    //   }, 0);
+    // AnnouncementSchema.virtual("commentAuthor").get(function() {
+     // // "reduz" array de exercícios para apenas a soma de suas durações
+     // return this.comments.populate({path: 'author'})
+     // }, 0);
 
     const AnnouncementModel = mongoose.model("Announcement", AnnouncementSchema);
 

@@ -8,7 +8,7 @@ import FormLabel from '@material-ui/core/FormLabel';
 export default function FormControlLabelPosition() {
   return (
     <FormControl component="fieldset">
-      <FormLabel component="legend">Select classes from which to view assignments:</FormLabel>
+      <FormLabel component="legend">Selecione as turmas das quais visualizar as tarefas:</FormLabel>
       <FormGroup aria-label="position" row>
         <FormControlLabel
           value="{CLASS1}"

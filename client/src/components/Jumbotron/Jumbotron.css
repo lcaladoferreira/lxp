@@ -12,16 +12,16 @@
 .btn {
   font-weight: bolder !important;
   color: #121212;
-  text-shadow: -1px 1px 0 #fffafa, 1px 1px 0 #61dbfb, 1px -1px 0 #42afac,
-    -1px -1px 0 #61dbfb;
+  text-shadow: -1px 1px 0 #fffafa, 1px 1px 0 #81a1a9, 1px -1px 0 #42afac,
+    -1px -1px 0 #355b64;
   border-radius: 20px;
   padding-right: auto;
   padding-left: auto;
   background-image: linear-gradient(
     to right,
-    #1c92d2 0%,
+    #4782a2 0%,
     #f2fcfe 51%,
-    #1c92d2 100%
+    #324149 100%
   ) !important;
 }
 .jumbotron {
@@ -31,7 +31,7 @@
   padding-right: auto !important;
   margin-top: 5rem !important;
   margin-bottom: 1rem !important;
-  box-shadow:0px 0px 50px 30px #61dbfb ;
+  box-shadow:0px 0px 50px 30px #657a7f ;
   border-radius: 40px !important;
   margin-right: -2rem;
   margin-left: -2rem;
@@ -67,7 +67,7 @@
 }
 .jumbotext {
   color: #121212;
-  text-shadow: -1px 1px 0 #fffafa, 1px 1px 0 #61dbfb, 1px -1px 0 #42afac,
+  text-shadow: -1px 1px 0 #fffafa, 1px 1px 0 #5e6d71, 1px -1px 0 #325857,
     -1px -1px 0 #61dbfb;
   font-size: auto;
 }

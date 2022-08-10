@@ -4,6 +4,8 @@ const mongoose = require("mongoose");
 const db = require("../models");
 const userFuncs = require("../controllers/functions");
 
+// o Banco de Dados necessita de novas chaves, estas chaves estão invalidas e foram usadas em outro projeto.
+
 const clear = async () => {
   try {
     console.log("[clear database] : running...");
@@ -58,9 +60,9 @@ const clear = async () => {
       await db.CommentModel.collection.drop();
     }
 
-    console.log("[clear] : success");
+    console.log("[clear] : sucesso");
   } catch {
-    throw new Error("failed to clear database");
+    throw new Error("falha ao limpar banco de dados");
   }
 };
 

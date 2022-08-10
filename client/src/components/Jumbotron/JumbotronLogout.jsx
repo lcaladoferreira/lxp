@@ -7,7 +7,7 @@ const JumbotronLogout = (props) => {
       <MDBContainer className='jumbocontain'>
             <MDBJumbotron className="jumboimg animated bounceInDown" style={{ backgroundImage: `url(https://i.ytimg.com/vi/Gg_9Cc3NKK8/maxresdefault.jpg)` }}>
                   <MDBCardTitle className="jumbotitle">LXP</MDBCardTitle>
-  {/* Andrew Write your statement in the P tag below*/}
+  
                   <p className="jumbotext"></p>
                   <MDBBtn className="btn-grad center" href={props.href}  onClick={props.logout}> Logout </MDBBtn>
             </MDBJumbotron>

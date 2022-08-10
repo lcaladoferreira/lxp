@@ -2,11 +2,9 @@ import React from "react";
 import "./NavbarTeacher.css";
 import Questions from "../../../images/feynman.jpg";
 import { Link } from "react-router-dom";
-// import { Fade } from '@material-ui/core';
 
 const NavbarTeacher = () => {
-  // useState expanded and setExpanded onClick
-  // circle back putas
+  // useState expandido e setExpanded onClick
   return (
     <React.Fragment>
       <div className="navbar-fixed col-md-8">
@@ -22,7 +20,7 @@ const NavbarTeacher = () => {
               width="155px"
             />
           </Link>
-          {/* The below a tag is the code that renders the hamburger menu when the size of the screen is minimized */}
+          {/* A tag abaixo é o código que renderiza o menu quando o tamanho da tela é minimizado */}
           <a
             href="/"
             data-target="mobile-demo"
@@ -45,7 +43,7 @@ const NavbarTeacher = () => {
                 window.location.pathname === "/Classroom" ? "active" : ""
               }
             >
-              <Link to="/Classroom">Classroom</Link>
+              <Link to="/Classroom">Salas de Aula</Link>
             </li>
             <li
               className={`nav-item
@@ -56,7 +54,7 @@ const NavbarTeacher = () => {
                             }
                             `}
             >
-              <Link to="/activitiesTeacher">Activities</Link>
+              <Link to="/activitiesTeacher">Atividades</Link>
             </li>
             <li
               className={`nav-item
@@ -67,7 +65,7 @@ const NavbarTeacher = () => {
                             }
                             `}
             >
-              <Link to="/assignmentsTeacher">Assignments</Link>
+              <Link to="/assignmentsTeacher">Tarefas</Link>
             </li>
             <li
               className={`nav-item
@@ -78,7 +76,7 @@ const NavbarTeacher = () => {
                             }
                             `}
             >
-              <Link to="/gradesTeacher">Gradebook</Link>
+              <Link to="/gradesTeacher">Matérias</Link>
             </li>
             <li
               className={window.location.pathname === "/syllabusTeacher" ? "active" : ""}

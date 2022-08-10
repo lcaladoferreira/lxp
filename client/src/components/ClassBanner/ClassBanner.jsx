@@ -10,11 +10,8 @@ const style = {
 function ClassBanner(props) {
 
   return (
-    <Paper style={style} elevation={16} /*style={{ backgroundImage: `url(${post.image})` }}*/>
+    <Paper style={style} elevation={16}>
       <Box p={4}>
-
-        {/* Increase the priority of the hero background image */}
-        {/* {<img style={{ display: 'none' }} src={post.image} alt={post.imageText} />} */}
         <div />
         <Grid container>
           <Grid item md={6}>
