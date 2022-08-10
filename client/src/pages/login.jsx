@@ -95,7 +95,7 @@ const Login = () => {
                                         style={stylin}
                                         className="inputLogin"
                                         size='s12'
-                                        name='email'
+                                        name='e-mail'
                                         label='Email :'
                                         required='email'
                                         customclass='validate center'
@@ -104,7 +104,7 @@ const Login = () => {
                                         style={stylin}
                                         className="inputLogin"
                                         size='s12'
-                                        name='password'
+                                        name='senha'
                                         label='Senha :'
                                         type='password'
                                         required='password'
