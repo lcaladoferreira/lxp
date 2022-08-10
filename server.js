@@ -29,11 +29,10 @@ app.use(routes);
 // quando estiver pronto para produção, vá para userController e defina
 // router.post('/login) parâmetro de cookie "secure" para true
 
-//abaixo está o mongoDb uri ao conectar ao heroku via mLab. O Mlab agora está separado do mongoDb e se tornou obsoleto.
 //const MONGODB_URI = `mongodb://${process.env.DB_USER}:${process.env.DB_PASSWORD}@ds143039.mlab.com:43039/heroku_hkn7jqvr`;
 const MONGODB_URI = `mongodb+srv://${process.env.DB_ATLAS_USER}:${process.env.DB_ATLAS_PASSWORD}@${process.env.DB_ATLAS_CLUSTER}.mongodb.net/<dbname>?retryWrites=true&w=majority`;
 console.log(MONGODB_URI);
-mongoose.connect(MONGODB_URI /*|| "mongodb://localhost/ProjectThree"*/, {
+mongoose.connect(MONGODB_URI /*|| "mongodb://localhost/LPXProject"*/, {
   useNewUrlParser: true,
   useFindAndModify: false,
   useCreateIndex: true,
